@@ -13,18 +13,112 @@
 </head>
 
 <body>
-    <div>
-        <div>
-            <div class="col-4"></div>
-            <div class="col-4"></div>
-            <div class="col-4"></div>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <div class="first">
+                <div>
+                    <a class="navbar-brand" href="/">HoldInfo.com</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+                <div>
+                    <p>Powered by <a href="https://www.finstreet.in/courses">Finstreet</a></p>
+                </div>
+            </div>
+            <div>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                INR
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="/">INR</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                BTC
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="/">BTC</a></li>
+                                <li><a class="dropdown-item" href="/">ETH</a></li>
+                                <li><a class="dropdown-item" href="/">USDT</a></li>
+                                <li><a class="dropdown-item" href="/">XRP</a></li>
+                                <li><a class="dropdown-item" href="/">TRX</a></li>
+                                <li><a class="dropdown-item" href="/">DASH</a></li>
+                                <li><a class="dropdown-item" href="/">ZEC</a></li>
+                                <li><a class="dropdown-item" href="/">XEM</a></li>
+                                <li><a class="dropdown-item" href="/">IOST</a></li>
+                                <li><a class="dropdown-item" href="/">WIN</a></li>
+                                <li><a class="dropdown-item" href="/">BTT</a></li>
+                                <li><a class="dropdown-item" href="/">WRX</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="first second">
+                <button class="btn btn-info"><a href="https://hodlinfo.com/connect/telegram" id="telegram"> Connect
+                        Telegram</a></button>
+            </div>
         </div>
+    </nav>
+
+    <div class="content">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col" style="text-align: center">Name</th>
+                    <th scope="col" style="text-align: center">Last</th>
+                    <th scope="col" style="text-align: center">Buy/Sell Price</th>
+                    <th scope="col" style="text-align: center">Volume</th>
+                    <th scope="col" style="text-align: center">Base_unit</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% let k=1 %>
+                    <% for(let c of currency) { %>
+                        <tr>
+                            <th scope="row">
+                                <%= k %>
+                            </th>
+                            <td style="text-align: center">
+                                <%= c.name %>
+                            </td>
+                            <td style="text-align: center">
+                                <%= c.last %>
+                            </td>
+                            <td style="text-align: center">
+                                &#8377;<%= c.buy %> / &#8377;<%= c.sell %>
+                            </td>
+                            <td style="text-align: center">
+                                <%= c.volume %>
+                            </td>
+                            <td style="text-align: center">
+                                <%= c.base_unit %>
+                            </td>
+                        </tr>
+                        <% k++ %>
+                            <% } %>
+            </tbody>
+        </table>
     </div>
+    <hr>
     <div class="footer">
-        <div class="d-flex align-items-center text-center">
-            <div class="footer-text">Copyright &copy; 2019</div>
-            <div class="footer-text">HoldInfo.com</div>
-            <div class="footer-text">Developed by <a href="https://www.quadbtech.com/">QuadBTech</a></div>
+        <div class="foot1">
+            <div class="footer-text d-inline">Copyright &copy; 2019</div>
+            <div class="footer-text d-inline">HoldInfo.com</div>
+            <div class="footer-text d-inline">Developed by <a href="https://www.quadbtech.com/">QuadBTech</a></div>
+        </div>
+        <div class="foot2">
+            <div class="footer-text">Support</div>
         </div>
     </div>
 

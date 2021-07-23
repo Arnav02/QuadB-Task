@@ -2,6 +2,76 @@ body {
     background-color: #191c29;
 }
 
+.container-fluid {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.dropdown {
+    margin: 0 1em;
+}
+
+.content {
+    margin: 3em
+}
+
+.first {
+    margin-left:  3em; 
+}
+
+.second {
+    margin-right: 3em;
+}
+
+.navbar-brand {
+    color: aqua;
+    font-size: 2em;
+}
+
+#navbarDropdown {
+    color: white;
+    background-color: #2e3241;
+    border: 1px solid #191c29;
+    border-radius: 0.8em;
+}
+
+.navbar {
+    background-color: #191c29;
+    color: white;
+}
+
+a {
+    text-decoration: none;
+    color: aqua;
+}
+
+a:hover {
+    color: aqua;
+}
+
+#telegram {
+    color: white;
+}
+
+.table {
+    color: white;
+    margin: auto;
+    padding: 2em;
+}
+
+hr {
+    color: gray;
+}
+
 .footer {
     color: #797b82;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+}
+
+.footer-text {
+    margin: 0 2em;
 }

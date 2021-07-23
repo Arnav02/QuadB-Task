@@ -64,6 +64,7 @@ fetchData();
 
 app.get('/', async (req, res) => {
     const response = await Currency.find();
+    // console.log(response[0].data);
     res.render('index', { currency: response[0].data });
 })
 
