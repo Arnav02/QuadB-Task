@@ -4,7 +4,7 @@ const path = require('path');
 const axios = require('axios');
 const mongoose = require('mongoose');
 const Currency = require('./models/currency');
-const currencyRoute = require('./routes/currency');
+// const currencyRoute = require('./routes/currency');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 dotenv.config();
@@ -26,7 +26,7 @@ db.once('open', function () {
     console.log('Connected to database');
 });
 
-app.use('/', currencyRoute);
+// app.use('/', currencyRoute);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
@@ -37,34 +37,23 @@ app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '/views'));
 
-const currencies = ['btcinr', 'xrpinr', 'ethinr', 'trxinr', 'eosinr', 'zilinr', 'batinr', 'zrxinr', 'omginr', 'polyinr'];
-
 const fetchData = async () => {
     try {
         const res = await axios.get('https://api.wazirx.com/api/v2/tickers');
-        const data = await Currency.find({});
-
-        for (let i = 0; i < 5; i++) {
-            // const currency = new Currency({
-            //     name: res.data.currencies[i].name,
-            //     base_unit: res.data.currencies[i].base_unit,
-            //     volume: res.data.currencies[i].volume,
-            //     last: res.data.currencies[i].last,
-            //     sell: res.data.currencies[i].sell,
-            //     buy: res.data.currencies[i].buy
-            // });
-            // currency.save()
-            //     .then(data => {
-            //         console.log('it worked');
-            //     })
-            //     .catch(err => {
-            //         console.log('oops, error!', err);
-            //     })
-            data[i].last = res.data.currencies[i].last;
-            data[i].buy = res.data.currencies[i].buy;
-            data[i].sell = res.data.currencies[i].sell;
-            data[i].volume = res.data.currencies[i].volume;
+        let c = 0;
+        const data = [];
+        for (let property in res.data) {
+            const { name, last, buy, sell, volume, base_unit } = res.data[property];
+            data.push({
+                name, last, buy, sell, volume, base_unit
+            });
+            c++;
+            if (c === 10) break;
         }
+        const currency = new Currency({ data });
+        const result = await Currency.remove();
+        // console.log(result.deletedCount);
+        currency.save();
     }
     catch (err) {
         console.log('Something went wrong: ', err);
@@ -72,6 +61,11 @@ const fetchData = async () => {
 }
 
 fetchData();
+
+app.get('/', async (req, res) => {
+    const response = await Currency.find();
+    res.render('index', { currency: response[0].data });
+})
 
 const port = process.env.PORT;
 app.listen(port, () => {
