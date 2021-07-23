@@ -14,7 +14,8 @@ body {
 }
 
 .content {
-    margin: 3em
+    margin: 0 3em;
+    margin-bottom: 4em;
 }
 
 .first {
@@ -27,7 +28,11 @@ body {
 
 .navbar-brand {
     color: aqua;
-    font-size: 2em;
+    font-size: 3em;
+}
+
+.finstreet {
+    font-size: 1.2em;
 }
 
 #navbarDropdown {
@@ -55,10 +60,24 @@ a:hover {
     color: white;
 }
 
+.fab {
+    padding-right: 0.5em;
+}
+
 .table {
     color: white;
     margin: auto;
     padding: 2em;
+    font-size: 1.3em;
+}
+
+.tHead {
+    color: gray;
+}
+
+.tRow {
+    border: 1px solid #2e322e;
+    background-color: #2e3241;
 }
 
 hr {
@@ -69,9 +88,9 @@ hr {
     color: #797b82;
     display: flex;
     justify-content: space-between;
-    margin: auto;
+    margin: 2em 0;
 }
 
 .footer-text {
-    margin: 0 2em;
+    margin: 0 1.5em;
 }
